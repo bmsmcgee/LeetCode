@@ -13,6 +13,15 @@ class Solution {
                 int left = i + 1;  // Second pointer starts just after 'i'
                 int right = nums.size() - 1;  // Third pointer starts at the last index
     
+                // Optimization: Calculate the minimum possible sum using the next two smallest elements
+                int min_sum = nums[i] + nums[i+1] + nums[i+2];
+    
+                // If the minimum possible sum is already greater than or equal to the target 
+                // plus the absolute difference between the target and closest_sum, we can return closest_sum early.
+                if (min_sum >= target + abs(target - closest_sum)) {
+                    return closest_sum;
+                }
+    
                 // Two-pointer approach to find the sum closest to the target
                 while (left < right) {
                     int current_sum = nums[i] + nums[left] + nums[right];  // Compute current triplet sum
