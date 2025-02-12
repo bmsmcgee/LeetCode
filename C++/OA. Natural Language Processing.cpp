@@ -1,76 +1,66 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <unordered_set>
+
 using namespace std;
 
-int solve(string &s) {
+// Function to find the longest self-sufficient proper substring length
+int longestSelfSufficientSubstring(const string& fullString) {
+    int n = fullString.size(); // Get the length of the string
 
-    int n = s.size();
+    // If the string is too short to have a proper substring, return 0
+    if (n <= 1) return 0;
 
-    // firstPos[c] and lastPos[c] store the first and last occurrence
-    // of the character c in the string. If c doesn't appear, both remain -1.
-    vector<int> firstPos(26, -1), lastPos(26, -1);
+    unordered_map<char, int> fullFreq; // Stores frequency of each character in fullString
 
-    // Fill firstPos and lastPos for each character
-    for (int i = 0; i < n; i++) {
-        int c = s[i] - 'a';
-        if (firstPos[c] == -1) {
-            firstPos[c] = i;      // first time we see character c
-        }
-        lastPos[c] = i;          // keep updating last position
+    // Count the occurrences of each character in fullString
+    for (char c : fullString) {
+        fullFreq[c]++;
     }
 
-    // Build a prefix frequency table so we can quickly count how many times
-    // each letter appears in any substring s[L..R].
-    // prefixFreq[c][i] = how many times character c appears in s[0..i-1].
-    vector<vector<int>> prefixFreq(26, vector<int>(n + 1, 0));
-    for (int i = 0; i < n; i++) {
-        int c = s[i] - 'a';
-        for (int letter = 0; letter < 26; letter++) {
-            prefixFreq[letter][i + 1] = prefixFreq[letter][i];
-        }
-        prefixFreq[c][i + 1]++;
-    }
+    int maxLength = 0; // Stores the length of the longest self-sufficient substring found
 
-    int best = 0; // Will track the length of the longest valid substring
+    // Iterate through all possible starting points of substrings
+    for (int start = 0; start < n; start++) {
+        unordered_map<char, int> subFreq; // Stores character frequencies in the current substring
+        unordered_set<char> usedOutside;  // Tracks characters that appear outside the substring
 
-    // Check each letter's "span" [start..end] = [firstPos[c]..lastPos[c]].
-    // That span includes all occurrences of character c.
-    // If that span is self-sufficient (and not the entire string),
-    // update 'best' if it's longer than the current 'best'.
-    for (int c = 0; c < 26; c++) {
-        if (firstPos[c] == -1) {
-            continue; // This letter doesn't appear at all
-        }
-        int start = firstPos[c];
-        int end   = lastPos[c];
-        int length = end - start + 1;
+        // Expand the substring from 'start' to 'end'
+        for (int end = start; end < n; end++) {
+            char c = fullString[end]; // Current character in the substring
+            subFreq[c]++; // Increment frequency count for the substring
 
-        // The substring must be proper (not the entire string).
-        if (length == n) {
-            continue;
-        }
+            // If all occurrences of 'c' are now inside the substring, remove from 'usedOutside'
+            if (subFreq[c] == fullFreq[c]) {
+                usedOutside.erase(c);
+            } else {
+                usedOutside.insert(c); // If 'c' still exists outside, add it to 'usedOutside'
+            }
 
-        // We'll check if every letter that appears in s[start..end]
-        // is fully contained in that same range.
-        bool valid = true;
-        for (int letter = 0; letter < 26; letter++) {
-            // Count how many times 'letter' appears within [start..end].
-            int countInRange = prefixFreq[letter][end + 1] - prefixFreq[letter][start];
-            if (countInRange > 0) {
-                // If 'letter' appears here, verify its entire range
-                // is inside [start..end].
-                if (firstPos[letter] < start || lastPos[letter] > end) {
-                    valid = false;
-                    break;
-                }
+            // Check if the substring is valid:
+            // 1. It should be a proper substring (not the full string)
+            // 2. No characters inside the substring should exist outside
+            if (end - start + 1 < n && usedOutside.empty()) {
+                maxLength = max(maxLength, end - start + 1);
             }
         }
-
-        if (valid) {
-            best = max(best, length);
-        }
     }
 
-    // If no valid substring was found that is smaller than the entire string, best remains 0.
-    cout << best << endl;
-    return best;
+    return maxLength; // Return the longest valid substring length
+}
+
+// Main function to test the implementation
+int main() {
+    // Test cases
+    string test1 = "abcab"; // Expected Output: 3 ("bca" or "cab")
+    string test2 = "aaaa";  // Expected Output: 0 (no valid substring)
+    string test3 = "abcd";  // Expected Output: 3 (e.g., "abc", "bcd")
+
+    // Run the function on the test cases and print the results
+    cout << longestSelfSufficientSubstring(test1) << endl;
+    cout << longestSelfSufficientSubstring(test2) << endl;
+    cout << longestSelfSufficientSubstring(test3) << endl;
+
+    return 0;
 }
