@@ -53,7 +53,7 @@ A _cycle exists_ in a linked list if there is some node in the list that can be 
 
 ## Time Complexity
 
-The time copmlexity is $O(n)$, where $n$ is the number of nodes in the linked list.
+The time complexity is $O(n)$, where $n$ is the number of nodes in the linked list.
 
 ## Space Complexity
 
