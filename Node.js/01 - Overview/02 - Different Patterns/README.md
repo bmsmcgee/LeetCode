@@ -63,3 +63,32 @@ In the asynchronouse version, we see the following:
   - We can pass a callback as a third argument to `fs.readFile()`. This vallback function gets sent to a callback queue. The callback function only gets invoked when the file read is finished.
     - This ability to register a callback in an asynchronous call is what makes Node.js event driven.
     - We can handle any errors in the callback. The first argument of this callback gives us access to the error object (i.e., error-first callback).
+
+## How does JavaScript Run a Callback Function Asynchronously?
+
+JavaScript is able to run a callback function asynchronously because of something running behind the scenes called the **event loop**.
+
+The event loop allows Node.js to perform non-blocking I/O operations. The multithreaded operations are delegated to the system kernel when needed.
+
+This mechanism helps the program invoke the callback function when the main function is finished.
+
+The event loop is neither part of the V8 JavaScript engine nor part of the JavaScript language. It's implemented through a library called `libuv` within Node.js.
+
+## Non-Blocking Code Benefits
+
+Non-blocking paradigms allow Node.js to process other code or make other requests while waiting for a response from some long-running operations, such as network requests.
+
+A Node.js application can handle higher throughput and thousands of concurrent connections while processing multiple requests simultaneously in a single thread without having to create a new thread for every request.
+
+For this reason, Node.js libraries usually are created using non-blocking paradigms.
+
+However, Node.js isn't a suitable choice for CPU-intensive and heavy computing workloads, such as video transcoding, graphics processing, or sorting a billion users. This is because CPU tasks aren't executed asynchronously and will block the single Node.js thread, causing the application to be unresponsive.
+
+## Node.js Case Studies
+
+Here are a few examples of how different companies have used Node.js to scale their applications:
+  - Netflix started using Node.js to enable high-volume web streaming for millions of its users to provide them observability, debuggability, and availability. As a result, Netflix developed its NodeQuark infrastructure, which enables the developers to create custom API experiences to run Netflix on different devices seamlessly.
+  - Ryan Hillard created an interactive form for the U.S. Small Business Administration using Node.js and other open-source software. The original proposal from an external vendor would have cost $130,000, but Hillard was able to create a solution for $3,000. He gave a talk that describes the technical difficulties he encountered and the way his Node.js solution fixed the problem.
+  - The Weather Channel of IBM uses Node.js for its weather forecasting website to deliver information about the weather news and observations to over a billion of its users worldwide.
+  - PayPal has been using Node.js for its server-side appplication platform due to its efficient and easily manageable code.
+  - LinkedIn has been using Node.hs to manage its users asynchronously. It has resulted in significant performance improvement and reduction of hardware cost.
