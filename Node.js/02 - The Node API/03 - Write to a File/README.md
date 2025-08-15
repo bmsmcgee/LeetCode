@@ -8,7 +8,17 @@ We can write to a file with `fs.writeFile()`. This method accepts two arguments:
 
 After writing `test.txt` with the implemented function, check the contents of `test.txt` displayed by the `readFile()` function.
 
-  <img width="1003" height="523" alt="image" src="https://github.com/user-attachments/assets/fc2136c5-6730-46a3-bc81-e0cec4b675c2" />
+  ```js
+  const writeFile = async (path, data) => {
+    try {
+      await fs.writeFile(path, data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  writeFile('./test.txt', 'hello world');
+  ```
 
   <img width="1047" height="567" alt="image" src="https://github.com/user-attachments/assets/270cbbd6-81cc-412b-8fe8-9c2a29092659" />
 
