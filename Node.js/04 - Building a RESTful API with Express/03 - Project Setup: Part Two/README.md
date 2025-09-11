@@ -78,10 +78,10 @@ That's all it takes to create a basic Node.js server with Express!
 
 3. To start our server, run:
 
-4. ```bash
-   node src/index.js
-   Server is up on port 8080
-   ```
+```bash
+node src/index.js
+Server is up on port 8080
+```
 
 The Node.js process will stay running until we shit it doen. We can always use _CTRL + c_ to terminate the process, stop the server, and regain control of the terminal. If we need to run other CLI commands, we'd have to start a new terminal window.
 
