@@ -141,7 +141,7 @@ tsc -w hello.ts
 
 The output would look something like this:
 
-```bash
+```
 [4:15:16 PM] Starting compilation in watch mode...
 [4:15:16 PM] Found 0 errors. Watching for file changes.
 ```
