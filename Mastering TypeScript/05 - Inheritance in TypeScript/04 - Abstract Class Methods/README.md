@@ -106,6 +106,14 @@ jackManager.employees.push(jillBlogg);
 jackManager.manageEmployees();
 ```
 
+Output:
+
+```
+Jack : doing work
+Joe : doing work
+Jill : doing work
+```
+
 - We add the `joeBlogg` and `jillBlogg` instances of the `OfficeWorker` class to the `employees` array on the `jackManager` instance of the `OfficeManager` class.
 - We then call the `manageEmployees` function on the `jackManager` instance.
 
