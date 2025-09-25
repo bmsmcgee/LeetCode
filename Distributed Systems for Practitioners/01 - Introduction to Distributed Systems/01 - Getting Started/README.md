@@ -8,7 +8,7 @@
 
 The components of this system can be thought of as software programs that run on physical hardware, such as computers. These components take many forms (e.g., web servers, routers, web browsers, etc.); to keep a generic view, we assume that each program runs on a separate machine. We refer to each of these machines as a **node**.
 
-IMAGE
+<img width="582" height="453" alt="image" src="https://github.com/user-attachments/assets/a1b3cdfc-bb00-47c3-8b09-ef682340b930" />
 
 The above illustration shows that the network either consists of direct connections between the distributed system components, or more components that form the backbone of the network (e.g., if communication is done through the Internet).
 
@@ -24,7 +24,7 @@ There are two categories of the central parts that help distributed systems func
 
 There are three main benefits of distributed systems, as shown in the illustration below.
 
-IMAGE
+<img width="446" height="302" alt="image" src="https://github.com/user-attachments/assets/cee38af6-2f24-4f7b-9f37-82ae15bee179" />
 
 Let's explain each one separately.
 
