@@ -12,7 +12,7 @@ To eliminate this confusion and help people build better systems, L Peter Deutsc
 
 There are eight such fallacies of distributed computing. The following illustration lists them
 
-IMAGE
+<img width="684" height="331" alt="image" src="https://github.com/user-attachments/assets/22a35a19-b8f0-4238-818a-ac45ff8c499b" />
 
 We'll gain a deeper understanding of why these statements are fallacious throughout the course.
 
