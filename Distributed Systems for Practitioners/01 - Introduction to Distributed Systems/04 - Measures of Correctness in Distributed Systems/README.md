@@ -16,13 +16,13 @@ The correctness measures for distributed systems are the two properties they mus
 
 A safety property defines something that must never happen in a correct system.
 
-IMAGE
+<img width="502" height="217" alt="image" src="https://github.com/user-attachments/assets/4b244c14-4660-475e-a37a-0d7cee07aef7" />
 
 ### Liveness
 
 A liveness property defines something that must eventually happen in a correct system.
 
-IMAGE
+<img width="506" height="216" alt="image" src="https://github.com/user-attachments/assets/dfaa58de-0faf-44f2-ba19-83a072900969" />
 
 ## Example of a Correct System
 
@@ -30,5 +30,5 @@ If we consider the correct properties of an over, we can say that "the oven not 
 
 Similar to this example, it's usually more important in a distributed system to ensure the system satisfies the safety property than the liveness one.
 
-IMAGE
+<img width="481" height="258" alt="image" src="https://github.com/user-attachments/assets/fd59ce2f-4773-4076-9200-f1911558532a" />
 
