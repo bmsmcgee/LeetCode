@@ -16,7 +16,7 @@ It's worth questioning this: why are distributed systems so hard to design? The 
 
 The following illustration shows the main properties that make distributed systems challenging to reason about.
 
-IMAGE
+<img width="554" height="319" alt="image" src="https://github.com/user-attachments/assets/d183b362-53ed-497f-b2e1-1214b6a9f34c" />
 
 Let's look at each property.
 
@@ -24,19 +24,19 @@ Let's look at each property.
 
 **Network asynchrony** is a property of communication networks that cannot provide strong guarentees around delivering events (e.g., a maximum amount of time a message requires for delivery). This can create a lot of counter-intuitive behaviours that are not present in non-distributed systems. This contrasts to memory operations that provide much [stricter guarentees](https://en.wikipedia.org/wiki/CAS_latency). For instance, messages might take extremely long to deliver in a distributed system. They may even deliver out of order &mdash; or not at all.
 
-IMAGE
+<img width="428" height="225" alt="image" src="https://github.com/user-attachments/assets/b5c42d67-b843-4a1a-adee-cc0a2a1a8ca7" />
 
 ### Partial Failures
 
 **Partial failures** are the cases where only some components of a distributed system fail. This behaviour can contrast with certain kinds of applications a single server deploys. These applications work under the assumption that either everything is working fine, or there has been a server crash. It introduces significant complexity when it requires atomicity across components in a distributed system. Thus, we must ensure that we either apply an operation to all the nodes of a system, or to none of them.
 
-IMAGE
+<img width="417" height="368" alt="image" src="https://github.com/user-attachments/assets/06e024f4-d076-42bf-a3c4-c4cea31e64ad" />
 
 ### Concurrency
 
 **Concurrency** is the execution of multiple computations at the same time, and potentially on the same piece of data. These computations interleave with each other. This introduces additional complexity since these computations can interfere with each other and create unexpected behaviours. This is, again, in contrast to simplistic applications with no concurrency, where the program runs in the order the sequence of commands in the source code defined.
 
-IMAGE
+<img width="404" height="270" alt="image" src="https://github.com/user-attachments/assets/d0710146-573a-4d6b-935b-a09766b445af" />
 
 Network asynchrony, partial failures, and concurrency are the major contributors to complexity in the field of distributed systems. So, we should keep them in mind when we build distributed systems in real life. Doing so would help us anticipate edge cases and handle them appropriately.
 
