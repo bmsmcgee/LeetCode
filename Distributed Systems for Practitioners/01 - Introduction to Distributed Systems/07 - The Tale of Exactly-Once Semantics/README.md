@@ -12,11 +12,11 @@ However, this means that the nodes may deliver messages multiple times because t
 
 The following illustration shows what happens when a node doesn't deliver a message at all.
 
-IMAGE
+<img width="266" height="345" alt="image" src="https://github.com/user-attachments/assets/6aa2e439-bd65-42bb-9ba3-73a80320a6af" />
 
-The following illustrations show a message that a node delivers twice.
+The following illustration show a message that a node delivers twice.
 
-IMAGES
+<img width="270" height="349" alt="image" src="https://github.com/user-attachments/assets/3b04343c-473f-4062-94f1-fba768af9de6" />
 
 This duplicate delivery of a message can create disastrous side effects.
 
