@@ -4,7 +4,7 @@
 
 There are several different types of failures. The following illustration shows the most basic categories.
 
-IMAGE
+<img width="533" height="422" alt="image" src="https://github.com/user-attachments/assets/7fc23f41-d1db-4eae-a087-eb3ee2c8cd32" />
 
 Let's see these failures one by one.
 
